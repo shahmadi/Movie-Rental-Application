@@ -1,0 +1,26 @@
+<% include partials/header %>
+<div class="container">
+<h1>our services</h1>
+
+
+<% post.forEach(function(s){ %>
+     
+       
+        <h4>
+            <%= s.title %>
+        </h4>
+        
+        <div>
+            <img src="<%= s.image %>">
+        </div>
+        
+        <p> <%= s.descr.substring(0,10) %> ... </p>
+        
+        <a href="/post/<%= s._id %>">Read More</a>
+
+<% }) %>
+ 
+  
+</div>
+
+<% include partials/footer %>

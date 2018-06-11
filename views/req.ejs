@@ -1,0 +1,55 @@
+<% include partials/header %>
+
+<form style="padding-top: 80px; margin: 50px;" action="/req" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Your Name</label>
+    <input type="email" class="form-control" name="name" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Phone Number</label>
+    <input type="email" class="form-control" name="phone" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Online Scheduler(Optional)</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2" name="time">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    
+  </div>
+ <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Online Scheduler (Optional)</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+      </div>
+      
+       <div class="form-group" style="width: 20%; margin:auto auto;">
+    <button class="btn btn-lg btn-primary btn-block">Send</button>
+     </div>
+ 
+</form>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+
+<% include partials/footer %>

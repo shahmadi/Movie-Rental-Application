@@ -1,0 +1,30 @@
+<% include partials/header %>
+<div class="container">
+    
+<div class="row">
+<% serv.forEach(function(s){ %>
+     
+        
+            <div class="col-lg-4 col-md-6">  
+        <div class="bb">
+        <h4>
+            <%= s.title %>
+        </h4>
+        
+        
+            <img src="<%= s.image %>" class="img-thumbnail"> 
+        
+        
+        <p> <%= s.descr.substring(0,10) %> ... </p>
+            
+        <a href="/service/<%= s._id %>">Read More</a>
+        </div>
+        </div>
+        
+
+<% }) %>
+</div> 
+  
+</div>
+
+<% include partials/footer %>
