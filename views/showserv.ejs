@@ -1,22 +1,36 @@
 <% include partials/header %>
 
-        <h1> <%= serv.title %> </h1>
+   
+        
+         <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4"><%= serv.title %></h1>
+                  <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+         </div>
+        </div>
+        
+        
         <div>
             <img src="<%= serv.image %>" class="img-thumbnail">
         </div>
+       
         
         <hr>
         
         <p>
-            <%= serv.descr %>
+            <%- serv.descr %>
         </p>
-            
-        <a class="btn btn-lg btn-primary btn-block" href="/service/<%= serv._id %>/edit">Edit</a>    
+        
+        <div align="center">
+        <a class="btn btn-primary" href="/service/<%= serv._id %>/edit" style=" margin-left: auto;">Edit</a>    
+         </div>
          
-         <form action="/service/<%= serv._id %>?_method=DELETE" method="POST">
+         <form action="/service/<%= serv._id %>?_method=DELETE" method="POST" align="center" style="margin-top: 10px">
             <div class="form-group" style="width: 20%; margin:auto auto;">
-             <button class="btn btn-lg btn-primary btn-block">DELETE</button>
+             <button class="btn btn-danger">DELETE</button>
              </div>
         </form> 
+        
+     
         
 <% include partials/footer %>
