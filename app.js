@@ -45,7 +45,8 @@ var webAppReq=new mongoose.Schema({
     email:String,
     message:String,
     time: String,
-    date: String
+    date: String,
+    datereq: String
 });
 
 var request=mongoose.model("request",webAppReq);
@@ -61,6 +62,7 @@ app.get("/req/new",function(req,res){
     res.render("req");
 })
 
+
 app.post("/req",function(req,res){
     var name=req.body.name;
     var phone=req.body.phone;
@@ -68,7 +70,15 @@ app.post("/req",function(req,res){
     var message=req.body.message;
     var time=req.body.time;
     var date=req.body.date;
-    var newrequest={name: name,phone: phone, email: email, message: message, time:time, date:date};
+    
+    var today=new Date();
+    var dd=today.getDate();
+    var mm=today.getMonth();
+    var yy=today.getFullYear();
+    
+    var datereq=dd+'/'+mm+'/'+yy;
+    
+    var newrequest={name: name,phone: phone, email: email, message: message, time:time, date:date, datereq:datereq};
     request.create(newrequest,function(err,nc){
         //if we had error in filling form we might wanna redirect user to form again and show them error message and why
        if(err){
@@ -81,6 +91,37 @@ app.post("/req",function(req,res){
     });
 });
 
+app.get("/req",function(req,res){
+     request.find({},function(err,allreq){
+       if(err){
+           console.log(err);
+       }
+       else{
+           res.render("reqlist",{req:allreq});
+       } 
+    });
+});
+
+app.get("/expertise",function(req,res){
+           res.render("exp");
+});
+
+app.get("/about",function(req,res){
+           res.render("about");
+});
+
+ app.delete("/req/:id",function(req,res){
+     console.log("HELLOO");
+     request.findByIdAndRemove(req.params.id,function(err){
+         if(err){
+             res.redirect("/req");
+         }
+         else{
+             res.redirect("/req");
+         }
+ })
+});
+
 //asking for new service and adding it
 app.get("/service",function(req,res){
     service.find({},function(err,allserv){
@@ -89,6 +130,17 @@ app.get("/service",function(req,res){
        }
        else{
            res.render("service",{serv:allserv});
+       } 
+    });
+});
+
+app.get("/servvice",function(req,res){
+    service.find({},function(err,allserv){
+       if(err){
+           console.log(err);
+       }
+       else{
+           res.render("servvice",{serv:allserv});
        } 
     });
 });
@@ -124,6 +176,8 @@ app.put("/service/:id",function(req,res){
     });
 });
 
+
+
  app.delete("/service/:id",function(req,res){
      service.findByIdAndRemove(req.params.id,function(err){
          if(err){
@@ -135,7 +189,23 @@ app.put("/service/:id",function(req,res){
  })
 });
 
+app.get("/servvice/:id",function(req,res){
+    console.log("HELLOO0");
+    service.findById(req.params.id,function(err,foundServ){
+        if(err){
+            res.redirect("/service");
+        }
+        else{
+            res.render("showserrvv",{serv:foundServ})
+        }
+    })
+   // res.send("HELLOo");ss
+    
+});
+
+
 app.get("/service/:id",function(req,res){
+    console.log("HELLOO0");
     service.findById(req.params.id,function(err,foundServ){
         if(err){
             res.redirect("/service");
@@ -144,7 +214,7 @@ app.get("/service/:id",function(req,res){
             res.render("showserv",{serv:foundServ})
         }
     })
-   // res.send("HELLOo");
+   // res.send("HELLOo");ss
     
 });
 
@@ -288,6 +358,17 @@ app.get("/shop",function(req,res){
     });
 });
 
+app.get("/shopp",function(req,res){
+    shop.find({},function(err,allshop){
+       if(err){
+           console.log(err);
+       }
+       else{
+           res.render("shopp",{shop:allshop});
+       } 
+    });
+});
+
 app.get("/shop/new",function(req,res){
     res.render("newshop");
 })
@@ -337,6 +418,19 @@ app.get("/shop/:id",function(req,res){
         }
         else{
             res.render("showshop",{shop:foundShop})
+        }
+    })
+   // res.send("HELLOo");
+    
+});
+
+app.get("/shopp/:id",function(req,res){
+    shop.findById(req.params.id,function(err,foundShop){
+        if(err){
+            res.redirect("/shop");
+        }
+        else{
+            res.render("showshopp",{shop:foundShop})
         }
     })
    // res.send("HELLOo");

@@ -1,38 +1,63 @@
 <% include partials/header %>
 
-<form style="padding-top: 80px; margin: 50px;" action="/req" method="POST">
+ <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Let us how we can help</h1>
+  </div>
+</div>
+<div class="row" style="margin-top: 60px;">
+  <div class="col-lg-2 col-md-6" style="margin-left: 500px;">
+     <div style="display:inline-block;"> <i class="fas fa-phone text-dark" style="padding-left: 80px;"></i></div>
+       <div style="display:inline-block;"> <p class="text-dark"style="padding-left: 10px;">(757) 468-6646</p> </div>
+       
+    </div>
+    <div class="col-lg-2 col-md-6">
+        <div style="display:inline-block;"> <i class="fas fa-envelope text-dark" style="padding-left: 30px;"></i></div>
+       <div style="display:inline-block;"> <p class="text-dark"style="padding-left: 10px;">Richard@email.com</p> </div>
+    </div>
+</div>
+<div style="margin-left: 500px;">
+    <div style="display:inline-block;"><i class="fas fa-location-arrow text-dark" style="padding-left: 80px;"></i></div>
+    <div style="display:inline-block;"><p style="color: black; padding-left: 10px;">2921 Durbin Pl, Virginia Beach, VA 23453</p></div>
+</div>
+<form style="padding-top: 20px; margin-left: 70px;" action="/req" method="POST">
   <div class="form-group">
-    <label for="exampleFormControlInput1">Your Name</label>
-    <input type="email" class="form-control" name="name" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" class="form-control" name="name" id="formGroupExampleInput" style="width: 350px;" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" style="width: 350px;" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Phone Number</label>
-    <input type="email" class="form-control" name="phone" id="exampleFormControlInput1" placeholder="name@example.com">
+    <input type="text" class="form-control" name="phone" id="exampleFormControlInput1" style="width: 300px;" required>
   </div>
    <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="exampleFormControlTextarea1">Requested Service</label>
+    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="7"  style="width: 600px;" required ></textarea>
   </div>
+  
+  <hr>
+  <h3>Online Scheduler(Optional)</h3>
+  
+  <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="date">Select date</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/  style="width: 400px;">
+      </div>
+      
   <div class="form-group">
-    <label for="exampleFormControlSelect2">Online Scheduler(Optional)</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2" name="time">
+    <label for="exampleFormControlSelect2">Select time</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2" name="time" style="width: 400px;">
       <option>8 AM-12 PM</option>
       <option>12 PM-4 PM</option>
       <option>4 PM-8 PM</option>
     </select>
     
   </div>
- <div class="form-group"> <!-- Date input -->
-        <label class="control-label" for="date">Online Scheduler (Optional)</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
       
-       <div class="form-group" style="width: 20%; margin:auto auto;">
-    <button class="btn btn-lg btn-primary btn-block">Send</button>
+       <div class="form-group" style="width: 20%; margin:20px auto;">
+    <button class="btn btn-lg btn-primary btn-block">Submit</button>
      </div>
  
 </form>

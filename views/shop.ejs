@@ -1,25 +1,47 @@
 <% include partials/header %>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Projects</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    
+  </div>
+</div>
+
+
 <div class="container">
-<h1>our services</h1>
-
-
+    
+<div class="row">
 <% shop.forEach(function(s){ %>
      
-       
-        <h4>
-            <%= s.title %>
-        </h4>
         
-        <div>
-            <img src="<%= s.image %>">
+            <div class="col-lg-4 col-md-6" style="margin-top: 10px; margin-bottom: 20px;">  
+            <div class="card" style="width: 20rem; height: 370px;">
+            <img class="card-img-top" src="<%= s.image %>" alt="Card image cap" style="max-height: 200px;">
+            <div class="card-body">
+             <h5 class="card-title"><%= s.title %></h5>
+             <!--<p class="card-text"><%- s.descr.substring(0,50) %></p>-->
+             <a href="/shop/<%= s._id %>" class="btn btn-secondary" style="margin-top: 50px;">More Details</a>
+             </div>
+             </div>
+        <!--<div class="bb">-->
+        <!--<h4>-->
+            <!--<%= s.title %>-->
+        <!--</h4>-->
+        
+        
+        <!--    <img src="<%= s.image %>" class="img-thumbnail"> -->
+        
+        
+        <!--<p> <%= s.descr.substring(0,10) %> ... </p>-->
+            
+        <!--<a href="/service/<%= s._id %>">Read More</a>-->
+        <!--</div>-->
         </div>
         
-        <p> <%= s.descr.substring(0,10) %> ... </p>
-        
-        <a href="/shop/<%= s._id %>">Read More</a>
 
 <% }) %>
- 
+</div> 
   
 </div>
 
